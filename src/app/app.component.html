@@ -1,2 +1,2 @@
 <p><input type="text" [(ngModel)]="parentImg" /></p>
-<app-img [img]="parentImg"></app-img>
+<app-img (loaded)="onLoaded($event)" [img]="parentImg"></app-img>

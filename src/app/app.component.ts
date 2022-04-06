@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   parentImg = 'https://source.unsplash.com/random';
+
+  onLoaded(img: string) {
+    console.log('Parent log', img);
+  }
 }
