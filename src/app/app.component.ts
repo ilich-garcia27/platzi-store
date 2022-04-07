@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   parentImg = 'https://source.unsplash.com/random';
+  showImg = true;
   products: Product[] = [
     {
       id: '1',
@@ -49,5 +50,9 @@ export class AppComponent {
 
   onLoaded(img: string) {
     console.log('Parent log', img);
+  }
+
+  toggleImage() {
+    this.showImg = !this.showImg;
   }
 }
