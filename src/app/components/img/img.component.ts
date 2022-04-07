@@ -11,7 +11,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   @Input('img')
   set changeImg(newImg: string) {
     this.img = newImg;
-    console.log('Just change image -> ', this.img);
+    // console.log('Just change image -> ', this.img);
   }
 
   @Output() loaded = new EventEmitter<string>();
@@ -21,18 +21,18 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
 
   constructor() {
     // Before rendering. DO NOT run asynchronous requests here. This runs just once.
-    console.log('Constructor', 'imgValue -> ', this.img);
+    // console.log('Constructor', 'imgValue -> ', this.img);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     // Before and during rendering. This updates changes on inputs. It runs many times.
-    console.log('ngOnChanges', 'imgValue -> ', this.img);
-    console.log('Changes: ', changes);
+    // console.log('ngOnChanges', 'imgValue -> ', this.img);
+    // console.log('Changes: ', changes);
   }
 
   ngOnInit(): void {
     // Before rendering. We can actually run asynchronous requests here. This runs once, when creating component.
-    console.log('ngOnInit', 'imgValue -> ', this.img);
+    // console.log('ngOnInit', 'imgValue -> ', this.img);
     // this.counterFunction = window.setInterval(() => {
     //   this.counter++;
     //   console.log('Running counter');
@@ -41,12 +41,12 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
 
   ngAfterViewInit(): void {
     // After rendering. We can handle children from here.
-    console.log('ngAfterViewInit');
+    // console.log('ngAfterViewInit');
   }
 
   ngOnDestroy(): void {
     // When deleting this component.
-    console.log('ngOnDestroy');
+    // console.log('ngOnDestroy');
 
     // window.clearInterval(this.counterFunction);
   }
@@ -56,7 +56,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   }
 
   imgLoaded() {
-    console.log('Child log');
+    // console.log('Child log');
     this.loaded.emit(this.img);
   }
 }

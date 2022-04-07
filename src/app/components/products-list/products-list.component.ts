@@ -4,9 +4,11 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
-  styleUrls: ['./products-list.component.scss']
+  styleUrls: ['./products-list.component.scss'],
 })
 export class ProductsListComponent implements OnInit {
+  shoppingCart: Product[] = [];
+  total: number = 0;
   products: Product[] = [
     {
       id: '1',
@@ -18,37 +20,41 @@ export class ProductsListComponent implements OnInit {
       id: '2',
       name: 'Almost brand new bike',
       price: 356,
-      image: './assets/images/bike.jpg'
+      image: './assets/images/bike.jpg',
     },
     {
       id: '3',
       name: 'Albums collection',
       price: 34,
-      image: './assets/images/album.jpg'
+      image: './assets/images/album.jpg',
     },
     {
       id: '4',
       name: 'My books',
       price: 23,
-      image: './assets/images/books.jpg'
+      image: './assets/images/books.jpg',
     },
     {
       id: '5',
-      name: 'Dog\'s house',
+      name: "Dog's house",
       price: 34,
-      image: './assets/images/house.jpg'
+      image: './assets/images/house.jpg',
     },
     {
       id: '6',
       name: 'Glasses',
       price: 3434,
-      image: './assets/images/glasses.jpg'
-    }
+      image: './assets/images/glasses.jpg',
+    },
   ];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit(): void {}
+
+  addToCart(product: Product) {
+    this.shoppingCart.push(product);
+    // this.total += product.price;
+    this.total = this.shoppingCart.reduce((sum, item) => sum + item.price, 0); // Reduces an array to a single value.
   }
-
 }
