@@ -1,6 +1,7 @@
 import { StoreService } from './../../services/store.service';
 import { Product } from './../../models/product.model';
 import { Component, OnInit } from '@angular/core';
+import { ProductsService } from './../../services/products.service';
 
 @Component({
   selector: 'app-products-list',
@@ -10,50 +11,17 @@ import { Component, OnInit } from '@angular/core';
 export class ProductsListComponent implements OnInit {
   shoppingCart: Product[] = [];
   total: number = 0;
-  products: Product[] = [
-    {
-      id: '1',
-      name: 'The best toy',
-      price: 565,
-      image: './assets/images/toy.jpg',
-    },
-    {
-      id: '2',
-      name: 'Almost brand new bike',
-      price: 356,
-      image: './assets/images/bike.jpg',
-    },
-    {
-      id: '3',
-      name: 'Albums collection',
-      price: 34,
-      image: './assets/images/album.jpg',
-    },
-    {
-      id: '4',
-      name: 'My books',
-      price: 23,
-      image: './assets/images/books.jpg',
-    },
-    {
-      id: '5',
-      name: "Dog's house",
-      price: 34,
-      image: './assets/images/house.jpg',
-    },
-    {
-      id: '6',
-      name: 'Glasses',
-      price: 3434,
-      image: './assets/images/glasses.jpg',
-    },
-  ];
+  products!: Product[];
 
-  constructor(private storeService: StoreService) {
+  constructor(private storeService: StoreService, private productsService: ProductsService) {
     this.shoppingCart = this.storeService.getShoppingCart();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.productsService.getAllProducts().subscribe(data => {
+      this.products = data;
+    })
+  }
 
   addToCart(product: Product) {
     this.storeService.addToCart(product);
